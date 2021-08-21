@@ -40,7 +40,8 @@ void APawnTurret::CheckFireCondition()
     }
     // If player Is in range THEN FIRE!!
     if (DistanceToPlayer() <= AttackDistance){
-        UE_LOG(LogTemp, Warning, TEXT("FIRING!!!!!"))    
+        UE_LOG(LogTemp, Warning, TEXT("FIRING!!!!!"));
+        Fire();
     }
 
     UE_LOG(LogTemp, Warning, TEXT("FIRE CONDITION CHECKED!!!"))
