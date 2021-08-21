@@ -17,6 +17,12 @@ void APawnTurret::BeginPlay()
 void APawnTurret::Tick(float DeltaTime)
 {
 	Super::Tick(DeltaTime);
+    if(!PlayerPawn || DistanceToPlayer() > AttackDistance)
+    {
+        return;
+    }
+    this->RotateTurret(PlayerPawn->GetActorLocation());
+    Fire();
 }
 
 void APawnTurret::CheckFireCondition() 
