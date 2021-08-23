@@ -5,7 +5,6 @@
 #include "GameFramework/ProjectileMovementComponent.h"
 #include "Kismet/GameplayStatics.h"
 
-
 // Sets default values
 AProjectileBase::AProjectileBase() {
   // Set this actor to call Tick() every frame.  You can turn this off to
@@ -19,15 +18,13 @@ AProjectileBase::AProjectileBase() {
 
   ProjectileMovement = CreateDefaultSubobject<UProjectileMovementComponent>(
       TEXT("Projectile Movement"));
-}
-
-// Called when the game starts or when spawned
-void AProjectileBase::BeginPlay() {
-  Super::BeginPlay();
   ProjectileMovement->InitialSpeed = MovementSpeed;
   ProjectileMovement->MaxSpeed = MovementSpeed;
   InitialLifeSpan = 3.0f;
 }
+
+// Called when the game starts or when spawned
+void AProjectileBase::BeginPlay() { Super::BeginPlay(); }
 
 void AProjectileBase::OnHit(UPrimitiveComponent *HitComp, AActor *OtherActor,
                             UPrimitiveComponent *OtherComp,
@@ -40,6 +37,7 @@ void AProjectileBase::OnHit(UPrimitiveComponent *HitComp, AActor *OtherActor,
   if (OtherActor && OtherActor != this && OtherActor != MyOwner) {
     UGameplayStatics::ApplyDamage(OtherActor, Damage,
                                   MyOwner->GetInstigatorController(), this,
-                                  DamageType)
+                                  DamageType);
+    Destroy();
   }
 }

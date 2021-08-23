@@ -24,7 +24,6 @@ private:
 	float AttackDistance = 500.0f;
 	float DistanceToPlayer();
 	void CheckFireCondition();
-	void Destroy();
 	FTimerHandle FireRateTimerHandle;
 	APawnTank* PlayerPawn;
 	

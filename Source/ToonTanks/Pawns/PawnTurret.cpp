@@ -29,7 +29,6 @@ void APawnTurret::Tick(float DeltaTime)
         return;
     }
     RotateTurret(PlayerPawn->GetActorLocation());
-    Fire();
 }
 
 void APawnTurret::CheckFireCondition() 
@@ -45,11 +44,6 @@ void APawnTurret::CheckFireCondition()
     }
 
     UE_LOG(LogTemp, Warning, TEXT("FIRE CONDITION CHECKED!!!"))
-}
-
-void APawnTurret::Destroy() 
-{
-    
 }
 
 float APawnTurret::DistanceToPlayer()
